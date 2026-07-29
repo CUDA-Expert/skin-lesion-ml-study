@@ -1,95 +1,103 @@
-# Skin Lesion Malignancy Study
+<p align="center">
+  <img src="./assets/cover.svg" width="100%" alt="Skin Lesion Malignancy Study" />
+</p>
 
-An academic machine learning study of malignancy classification under extreme
-class imbalance using the ISIC 2024 challenge setting.
+<p align="center">
+  <img src="https://img.shields.io/badge/Domain-Medical%20Imaging-EC4899?style=flat-square" alt="Medical imaging" />
+  <img src="https://img.shields.io/badge/Challenge-Extreme%20Imbalance-F97316?style=flat-square" alt="Extreme class imbalance" />
+  <img src="https://img.shields.io/badge/Public%20Edition-Research%20Case%20Study-334155?style=flat-square" alt="Research case study" />
+</p>
 
-The work was completed as a university team project. Mohammed Yousef Rasheed
-focused on the CNN and image preprocessing track.
+An academic study of skin lesion malignancy classification in the ISIC 2024
+setting, where a clinically important positive class represents roughly one
+tenth of one percent of the available cases.
 
-## Research Question
+> Developed collaboratively as a university team project. This repository
+> presents the research design and evidence boundary; notebooks, reports, and
+> data dependent artifacts remain in a private archive.
 
-How should a machine learning pipeline be designed when the positive class is
-clinically important but represents roughly one tenth of one percent of the
-available cases?
+## The central problem
 
-This project studies the consequences of that imbalance across preprocessing,
-representation learning, classical classification, and threshold selection.
-Raw accuracy is not treated as sufficient evidence.
+<table>
+  <tr>
+    <td align="center"><strong>401,059</strong><br />total cases</td>
+    <td align="center"><strong>393</strong><br />malignant cases</td>
+    <td align="center"><strong>≈ 0.1%</strong><br />positive prevalence</td>
+    <td align="center"><strong>5</strong><br />preserved notebooks</td>
+  </tr>
+</table>
 
-## Study Scope
+With this level of imbalance, a model can report excellent accuracy while
+missing nearly every malignant case. The study therefore centers sensitivity,
+specificity, precision, recall, calibration, and threshold behavior instead of
+treating raw accuracy as sufficient evidence.
 
-The project explored:
+## Study design
 
-* image cleaning and preprocessing
-* targeted augmentation for minority examples
-* ImageNet pretrained ResNet50 representations
-* logistic regression and support vector machine baselines
-* imbalance handling
-* decision threshold selection
+```mermaid
+flowchart LR
+    A[ISIC images and metadata] --> B[Quality review and preprocessing]
+    B --> C[Targeted minority augmentation]
+    C --> D[ResNet50 representation learning]
+    D --> E[Logistic regression]
+    D --> F[Support vector machine]
+    D --> G[CNN track]
+    E --> H[Threshold and error analysis]
+    F --> H
+    G --> H
+```
 
-## Method Map
+## Method map
 
 | Stage | Purpose |
 | --- | --- |
-| image preprocessing | standardize visual inputs and inspect quality variation |
-| targeted augmentation | increase minority class exposure without claiming new patients |
-| ResNet50 representations | extract 2,048 dimensional image features |
-| logistic regression and SVM | compare interpretable classical decision boundaries |
-| imbalance handling | reduce majority class dominance during learning |
-| threshold analysis | study sensitivity and false positive tradeoffs |
+| Image preprocessing | Standardize inputs and inspect quality variation |
+| Targeted augmentation | Increase minority exposure without claiming new patients |
+| ResNet50 representations | Produce 2,048 dimensional features from ImageNet weights |
+| Logistic regression and SVM | Compare classical decision boundaries |
+| Imbalance handling | Reduce majority class dominance during learning |
+| Threshold analysis | Examine sensitivity and false positive tradeoffs |
 
-## Why the Imbalance Matters
+## Evidence status
 
-A classifier can achieve superficially high accuracy while missing nearly every
-malignant case. The meaningful questions are therefore about sensitivity,
-specificity, precision, recall, calibration, threshold behavior, and validation
-under a fixed patient level split.
+The private archive preserves the CNN, logistic regression, SVM, and
+preprocessing notebooks together with the academic report and model notes.
 
-## Private Research Archive
+| Check | Result |
+| --- | --- |
+| Selected notebook structure | 5 valid notebook files |
+| Archive integrity | Preserved files match the original archive by SHA256 |
+| Full training rerun | Not completed during portfolio preparation |
+| External clinical validation | Not performed |
 
-The private development repository preserves:
+Some notebooks still depend on local paths and on data that is not distributed
+through GitHub. The project therefore remains a research archive until the
+experiment is rebuilt around a documented, patient level protocol.
 
-* CNN notebook
-* logistic regression notebooks
-* SVM and preprocessing notebooks
-* academic report
-* CNN model notes
+## What the study does not claim
 
-The large image dataset and derived image folders are not stored in GitHub.
+1. It is not a clinically validated diagnostic system.
+2. It does not establish performance on an external hospital population.
+3. Augmented images do not replace independent malignant examples.
+4. Notebook outputs do not replace a frozen evaluation protocol.
 
-## Reproducibility Status
+## Public and private boundary
 
-All five selected notebooks in the private archive parse as valid notebook files,
-and every preserved file matches the original archive by SHA256.
+This public repository contains the research question, methodology, evidence
+status, limitations, and next steps. The notebooks and report remain private
+while reproducibility, team approval, and dataset handling are reviewed. The
+large ISIC image collection is not stored in GitHub.
 
-The training pipeline was not rerun during portfolio preparation. Some notebooks
-contain local machine paths and depend on data that is not stored in GitHub, so
-the source remains private until a team approved reproducibility pass is
-completed.
+## Roadmap
 
-## Source Availability
+1. Rebuild the experiment around a documented patient level split.
+2. Compare weighting, sampling, and focal loss under one protocol.
+3. Report confidence intervals, calibration, and threshold curves.
+4. Add subgroup and failure mode analysis.
+5. Package preprocessing and evaluation as reproducible stages.
 
-This public repository documents the research question, methodology, contribution,
-evidence, and limitations. The notebooks and academic report remain in the
-private team archive.
+## Responsible use
 
-## What This Repository Does Not Claim
-
-* it is not a clinically validated diagnostic model
-* it does not establish performance on an external hospital population
-* augmentation does not replace independent malignant examples
-* notebook outputs are not a substitute for a frozen evaluation protocol
-
-## Next Technical Milestones
-
-* rebuild the experiment around a documented patient level split
-* isolate preprocessing, feature extraction, and evaluation into reproducible stages
-* report confidence intervals and threshold curves
-* compare class weighting, sampling, and focal loss under the same protocol
-* add calibration and subgroup error analysis
-
-## Responsible Use
-
-This project is educational research. It is not a diagnostic system and must not
-be used for clinical decisions. Any public release should link to the official
-ISIC data source instead of redistributing images.
+This project is educational research. It must not be used for diagnosis or
+clinical decision making. Any future release should point to the official ISIC
+data source instead of redistributing medical images.
