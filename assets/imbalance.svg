@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 470" width="1000" height="470" role="img" aria-label="The ISIC 2024 class imbalance drawn to scale: 400,666 benign cases against 393 malignant cases, where the malignant share is under one pixel wide at full bar scale, followed by the balanced 40,000 image experimental set built by augmenting those same 393 cases.">
+  <rect width="1000" height="470" rx="14" fill="#0f172a"/>
+
+  <text x="60" y="52" font-family="ui-sans-serif,system-ui,-apple-system,Segoe UI,Helvetica,Arial" font-size="24" font-weight="700" fill="#e2e8f0">The imbalance, drawn to scale</text>
+  <text x="60" y="78" font-family="ui-sans-serif,system-ui,-apple-system,Segoe UI,Helvetica,Arial" font-size="14" fill="#94a3b8">ISIC 2024. One malignant case for every 1,020 images.</text>
+
+  <text x="60" y="132" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" letter-spacing="1.4" fill="#94a3b8">AS COLLECTED</text>
+
+  <rect x="60" y="146" width="880" height="40" rx="5" fill="#334155"/>
+  <rect x="939.1" y="146" width="0.9" height="40" fill="#f97316"/>
+  <rect x="936" y="140" width="8" height="52" rx="3" fill="none" stroke="#f97316" stroke-width="1.5"/>
+
+  <line x1="940" y1="196" x2="940" y2="222" stroke="#f97316" stroke-width="1.5"/>
+  <line x1="940" y1="222" x2="792" y2="222" stroke="#f97316" stroke-width="1.5"/>
+  <text x="786" y="227" text-anchor="end" font-family="ui-sans-serif,system-ui,-apple-system,Segoe UI,Helvetica,Arial" font-size="13" fill="#fdba74">393 malignant, 0.098 percent</text>
+
+  <text x="68" y="172" font-family="ui-sans-serif,system-ui,-apple-system,Segoe UI,Helvetica,Arial" font-size="14" font-weight="600" fill="#cbd5e1">400,666 benign</text>
+  <text x="60" y="252" font-family="ui-sans-serif,system-ui,-apple-system,Segoe UI,Helvetica,Arial" font-size="13" fill="#94a3b8">At this width the malignant class is 0.9 pixels. The chart cannot show it, which is the finding.</text>
+  <text x="60" y="274" font-family="ui-sans-serif,system-ui,-apple-system,Segoe UI,Helvetica,Arial" font-size="13" fill="#94a3b8">A model that answers &#8220;benign&#8221; every time scores 99.90 percent accuracy and catches nothing.</text>
+
+  <line x1="60" y1="306" x2="940" y2="306" stroke="#1e293b" stroke-width="1"/>
+
+  <text x="60" y="342" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" letter-spacing="1.4" fill="#94a3b8">EXPERIMENTAL SET, AFTER TARGETED AUGMENTATION</text>
+
+  <rect x="60" y="356" width="440" height="40" rx="5" fill="#334155"/>
+  <rect x="500" y="356" width="440" height="40" rx="5" fill="#f97316" fill-opacity="0.85"/>
+  <text x="68" y="382" font-family="ui-sans-serif,system-ui,-apple-system,Segoe UI,Helvetica,Arial" font-size="14" font-weight="600" fill="#cbd5e1">20,000 benign</text>
+  <text x="508" y="382" font-family="ui-sans-serif,system-ui,-apple-system,Segoe UI,Helvetica,Arial" font-size="14" font-weight="600" fill="#0f172a">20,000 malignant, augmented</text>
+
+  <text x="60" y="428" font-family="ui-sans-serif,system-ui,-apple-system,Segoe UI,Helvetica,Arial" font-size="13" fill="#94a3b8">40,000 images total. The right-hand bar still derives from the same 393 original cases,</text>
+  <text x="60" y="448" font-family="ui-sans-serif,system-ui,-apple-system,Segoe UI,Helvetica,Arial" font-size="13" fill="#94a3b8">so it rebalances the training signal without adding independent evidence.</text>
+</svg>
