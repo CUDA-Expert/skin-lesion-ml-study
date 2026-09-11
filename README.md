@@ -1,42 +1,46 @@
-<p align="center">
-  <img src="./assets/imbalance.svg" width="100%" alt="The ISIC 2024 class imbalance drawn to scale: 400,666 benign cases fill the bar while the 393 malignant cases occupy under one pixel, followed by the balanced 40,000 image experimental set built by augmenting those same 393 cases" />
-</p>
+![Skin Lesion ML Study portfolio cover](./assets/portfolio-cover.webp)
 
-<p align="center">
-  <img src="https://img.shields.io/badge/Domain-Medical%20Imaging-EC4899?style=flat-square" alt="Medical imaging" />
-  <img src="https://img.shields.io/badge/Challenge-Extreme%20Imbalance-F97316?style=flat-square" alt="Extreme class imbalance" />
-  <img src="https://img.shields.io/badge/Public%20Edition-Research%20Case%20Study-334155?style=flat-square" alt="Research case study" />
-</p>
+<sub>Concept illustration. The study distribution diagram appears below.</sub>
 
-An academic study of skin lesion malignancy classification in the ISIC 2024
-setting, where a clinically important positive class represents roughly one
-tenth of one percent of the available cases.
+# Skin Lesion ML Study
 
-> Developed collaboratively as a university team project. This repository
-> presents the research design and evidence boundary; notebooks, reports, and
-> data dependent artifacts remain in a private archive.
+**When 99.90% accuracy can still miss every positive case.**
 
-## The central problem
+A university team study of skin lesion malignancy classification in the ISIC 2024 setting, focused on extreme class imbalance, image preprocessing, and model comparison.
 
-<table>
-  <tr>
-    <td align="center"><strong>401,059</strong><br />total cases</td>
-    <td align="center"><strong>400,666</strong><br />benign</td>
-    <td align="center"><strong>393</strong><br />malignant</td>
-    <td align="center"><strong>0.098%</strong><br />positive prevalence</td>
-    <td align="center"><strong>40,000</strong><br />balanced study set</td>
-  </tr>
-</table>
+**Academic research archive** · **Private notebooks and reports** · **No published performance benchmark**
 
-With this level of imbalance, a model can report excellent accuracy while
-missing nearly every malignant case. A constant predictor that answers benign
-for every input scores **99.90 percent accuracy** on this distribution while
-detecting zero cancers, which is the reason accuracy is not reported anywhere in
-this study.
+[The challenge](#the-challenge) · [My contribution](#my-contribution) · [Study design](#study-design) · [Evidence](#evidence-status)
 
-Sensitivity, specificity, precision, recall, calibration, and threshold
-behaviour are the measurements that carry meaning here, and the threshold is
-part of the result rather than a detail chosen afterwards.
+## The challenge
+
+| Available dataset | Cases |
+| --- | ---: |
+| Benign | 400,666 |
+| Malignant | 393 |
+| **Total** | **401,059** |
+| **Positive prevalence** | **0.098%** |
+
+A constant predictor that labels every case benign would achieve approximately **99.90% accuracy** on this distribution while identifying **zero malignant cases**.
+
+That is a calculated illustration of the imbalance, not a trained model result. Sensitivity, specificity, precision, recall, calibration, and threshold behaviour are the relevant evaluation concerns.
+
+![ISIC 2024 class distribution and the balanced 40,000 image experimental set formed through augmentation of the original malignant cases](./assets/imbalance.svg)
+
+The documented balanced study set contains **40,000 images**. Augmentation increases image count, not the number of independent patients or original malignant cases. Available dataset size and experimental set size therefore describe different things.
+
+## My contribution
+
+I worked on image preprocessing and the CNN track, including targeted augmentation for the experimental set and ResNet50 representations.
+
+| Area | My work |
+| --- | --- |
+| Preprocessing | Preparing lesion images for the study workflow |
+| Targeted augmentation | Building the balanced experimental image set through minority augmentation |
+| ResNet50 representations | Working with image representations for the model experiments |
+| CNN track | Developing the convolutional model experiments |
+
+The wider model comparison, notebooks, and study design were developed collaboratively. Results and architecture described here belong to the team project.
 
 ## Study design
 
@@ -53,49 +57,34 @@ flowchart LR
     G --> H
 ```
 
-## Method map
-
-| Stage | Purpose |
+| Method | Purpose |
 | --- | --- |
-| Image preprocessing | Standardize inputs and inspect quality variation |
-| Targeted augmentation | Increase minority exposure without claiming new patients |
-| ResNet50 representations | Produce 2,048 dimensional features from ImageNet weights |
+| Image preprocessing | Standardize inputs and review quality variation |
+| Targeted augmentation | Increase minority exposure during learning |
+| ResNet50 representations | Extract 2,048 dimensional features using ImageNet weights |
 | Logistic regression and SVM | Compare classical decision boundaries |
-| Imbalance handling | Reduce majority class dominance during learning |
+| CNN track | Investigate convolutional classification |
 | Threshold analysis | Examine sensitivity and false positive tradeoffs |
+
+The diagram summarizes the documented study design. It does not establish that every stage has been reproduced under a frozen evaluation protocol.
 
 ## Evidence status
 
-The private archive preserves the CNN, logistic regression, SVM, and
-preprocessing notebooks together with the academic report and model notes.
+The private archive preserves CNN, logistic regression, SVM, and preprocessing notebooks, together with the academic report and model notes.
 
-| Check | Result |
+| Check | Recorded status |
 | --- | --- |
 | Selected notebook structure | 5 valid notebook files |
 | Archive integrity | Preserved files match the original archive by SHA256 |
 | Full training rerun | Not completed during portfolio preparation |
 | External clinical validation | Not performed |
-| Published performance figures | **None.** No frozen evaluation run exists to report from |
+| Published performance figures | None |
 
-Some notebooks still depend on local paths and on data that is not distributed
-through GitHub. The project therefore remains a research archive until the
-experiment is rebuilt around a documented, patient level protocol.
+Some notebooks depend on local paths and data that is not distributed through GitHub. Archive integrity and valid notebook structure do not establish model performance.
 
-## What the study does not claim
+The project remains a research archive until the experiment is rebuilt around a documented patient level protocol. Existing notebook outputs do not replace that evaluation.
 
-1. It is not a clinically validated diagnostic system.
-2. It does not establish performance on an external hospital population.
-3. Augmented images do not replace independent malignant examples.
-4. Notebook outputs do not replace a frozen evaluation protocol.
-
-## Public and private boundary
-
-This public repository contains the research question, methodology, evidence
-status, limitations, and next steps. The notebooks and report remain private
-while reproducibility, team approval, and dataset handling are reviewed. The
-large ISIC image collection is not stored in GitHub.
-
-## Roadmap
+## Next steps
 
 1. Rebuild the experiment around a documented patient level split.
 2. Compare weighting, sampling, and focal loss under one protocol.
@@ -103,8 +92,14 @@ large ISIC image collection is not stored in GitHub.
 4. Add subgroup and failure mode analysis.
 5. Package preprocessing and evaluation as reproducible stages.
 
+## Repository scope
+
+This public repository contains the research question, methodology, class distribution diagram, evidence status, limitations, and next steps.
+
+Notebooks and reports remain private while reproducibility, team approval, and dataset handling are reviewed. The large ISIC image collection is not stored in GitHub.
+
 ## Responsible use
 
-This project is educational research. It must not be used for diagnosis or
-clinical decision making. Any future release should point to the official ISIC
-data source instead of redistributing medical images.
+This project is educational research. It has not been clinically validated and must not be used for diagnosis or clinical decision making. It does not establish performance on an external hospital population.
+
+Any future release should reference the official ISIC data source rather than redistribute medical images.
